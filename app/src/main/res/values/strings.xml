@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">NomadNest</string>
+    <string name="skip">Skip</string>
+    <string name="next">Next</string>
+
+    <!--    intro screen-->
+    <string name="intro1_title">Explore the World, One Tap at a Time!</string>
+    <string name="intro2_title">Wander Without Boundaries: Our Travel App Unleashed!</string>
+    <string name="intro3_title">Discover, Plan, Go: The Ultimate Travel Companion!</string>
+    <string name="intro4_title">Explore More, Worry Less: Let Our App Handle the Rest!</string>
+
+    <string name="intro1_description">Embark on a global adventure with just a tap! Explore the wonders of the world through our interactive app!</string>
+    <string name="intro2_description">Discover limitless adventures with Wander Without Boundaries, our unleashed travel app. Explore the world like never before!</string>
+    <string name="intro3_description">Discover, Plan, Go: Your ultimate travel companion for seamless adventures, providing expert guidance from start to finish!</string>
+    <string name="intro4_description">Discover a stress-free life with our app - Explore More, Worry Less! Let it take care of everything for you!</string>
+    <string name="lets_explore">Let\'s Explore</string>
+
+
+</resources>
