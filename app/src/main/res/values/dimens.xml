@@ -4,9 +4,10 @@
     <dimen name="small_margin">5dp</dimen>
     <dimen name="medium_margin">10dp</dimen>
     <dimen name="large_margin">20dp</dimen>
+    <dimen name="high_margin">30dp</dimen>
+    <dimen name="big_margin">50dp</dimen>
 
-    <dimen name="standard_corner">10dp</dimen
-        >
+    <dimen name="standard_corner">10dp</dimen>
     <dimen name="intro_image_size">200dp</dimen>
 
 
@@ -14,6 +15,6 @@
     <dimen name="medium_font">15sp</dimen>
     <dimen name="large_font">20sp</dimen>
     <dimen name="title_font">25sp</dimen>
-    <dimen name="high_margin">30dp</dimen>
+
 
 </resources>
