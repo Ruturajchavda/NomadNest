@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
 
     // declare database name and version
-    private static final String DATABASE_NAME = "DBGrocery";
+    private static final String DATABASE_NAME = "NomadNestDB";
     private static final int DATABASE_VERSION = 1;
 
     public NomadNestDatabaseHelper(Context context) {
