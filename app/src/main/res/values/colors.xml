@@ -9,6 +9,7 @@
     <color name="color_primary_extra_light">#ABB2E7</color>
 
     <!--    gray colors-->
+    <color name="extra_light_gray">#88DCDCDC</color>
     <color name="gainsboro">#DCDCDC</color>
     <color name="light_gray">#D3D3D3</color>
     <color name="silver">#C0C0C0</color>
