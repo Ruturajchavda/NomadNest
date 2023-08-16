@@ -14,6 +14,20 @@
     <string name="intro3_description">Discover, Plan, Go: Your ultimate travel companion for seamless adventures, providing expert guidance from start to finish!</string>
     <string name="intro4_description">Discover a stress-free life with our app - Explore More, Worry Less! Let it take care of everything for you!</string>
     <string name="lets_explore">Let\'s Explore</string>
+    <string name="welcome_message">Welcome to NomadNest!</string>
+    <string name="welcome_description">Explore More, Worry Less: Let Our App Handle the Rest!</string>
+    <string name="email">Email Address</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="forgot_password">Forgot Passoword?</string>
+    <string name="dont_have_account">Don\'t have account?  </string>
+    <string name="signup">Sign Up</string>
+    <string name="privacy_policy">I agree to the <font color='#2F40C3'>Terms of Service</font> and <font color='#2F40C3'>Privacy Policy</font></string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="create_an_account_description">Fill up your details so we can help you more efficiently in your travel journey!</string>
+    <string name="name">Full Name</string>
+    <string name="already_have_account">Already have an account?  </string>
+    <string name="confirm_password">Confirm Password</string>
 
 
 </resources>
