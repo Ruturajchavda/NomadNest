@@ -121,8 +121,8 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
     }
 
     private void goToHomeScreen() {
-        finish();
         startActivity(new Intent(IntroScreenActivity.this,HomeActivity.class));
+        finish();
     }
 
 }
