@@ -45,7 +45,22 @@
     <string name="name">Full Name</string>
     <string name="already_have_account">Already have an account?  </string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="title_back">Back</string>
 
 
+    <string name="desc_butchart_gardens">The Butchart Gardens is a group of floral display gardens in Brentwood Bay, British Columbia, Canada, located near Victoria on Vancouver Island. The gardens receive over a million visitors each year. The gardens have been designated a National Historic Site of Canada</string>
+    <string name="desc_montmorency_falls">The Montmorency Falls is a large waterfall on the Montmorency River in Quebec, Canada.</string>
+    <string name="desc_toronto_ilands">The Toronto Islands are a chain of 15 small islands in Lake Ontario, south of mainland Toronto, Ontario, Canad</string>
+    <string name="desc_algonquin_provincial_park">Algonquin Provincial Park is in southeastern Ontario, Canada. Its forests, rivers and numerous lakes, including the large Lake of Two Rivers, are home to moose, bears and common loons. The park’s many trails include the Whiskey Rapids Trail, along the Oxtongue River, and the Barron Canyon Trail, with views from the north rim. The Algonquin Logging Museum features a re-created camp and a steam-powered amphibious tug.</string>
+    <string name="desc_rideau_canal">The Rideau Canal is a 202 kilometre long canal that links the Ottawa River, at Ottawa, with the Saint Lawrence River at Kingston, Ontario, Canada.</string>
+    <string name="desc_niagara_falls">Niagara Falls, Ontario, is a Canadian city at the famous waterfalls of the same name, linked with the U.S. by the Rainbow Bridge. Its site on the Niagara River\'s western shore overlooks the Horseshoe Falls, the cascades\' most expansive section. Elevators take visitors to a lower, wetter vantage point behind the falls. A cliffside park features a promenade alongside 520-ft.-high Skylon Tower with an observation deck</string>
 
+    <string name="category_mountain">Mountains</string>
+    <string name="category_nature">Nature</string>
+    <string name="category_falls">Falls</string>
+    <string name="category_countryside">Countryside</string>
+
+    <string name="demo_price">$1290</string>
+    <string name="price_for_people">Price for 2 People</string>
+    <string name="book_tour">Book a Tour</string>
 </resources>

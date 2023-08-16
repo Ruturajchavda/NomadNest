@@ -75,10 +75,10 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
     private void init() {
         // Add example data to itemList
-        Places places1 = new Places(1, "Montmorency Falls", "Quebec, Canada", "4.6", R.drawable.travel_1);
-        searchItemList.add(places1);
         Places places2 = new Places(2, "The Butchart Gardens", "Brentwood Bay, BC", "4.7", R.drawable.travel_2);
         searchItemList.add(places2);
+        Places places1 = new Places(1, "Montmorency Falls", "Quebec, Canada", "4.6", R.drawable.travel_1);
+        searchItemList.add(places1);
         Places places3 = new Places(3, "Toronto Islands", "Lake Ontario", "4.7", R.drawable.travel_3);
         searchItemList.add(places3);
         Places places4 = new Places(4, "Algonquin Provincial Park", "Ontario, Canada", "5.0", R.drawable.travel_4);

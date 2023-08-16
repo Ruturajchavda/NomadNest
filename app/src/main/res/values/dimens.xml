@@ -20,6 +20,8 @@
     <dimen name="dim_24">24dp</dimen>
     <dimen name="dim_25">25dp</dimen>
     <dimen name="dim_26">26dp</dimen>
+    <dimen name="dim_28">28dp</dimen>
+    <dimen name="dim_30">30dp</dimen>
 
     <dimen name="small_font">10sp</dimen>
     <dimen name="medium_font">15sp</dimen>

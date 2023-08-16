@@ -30,7 +30,9 @@
         <item>@color/color_primary_dark</item>
         <item>@color/color_primary_dark</item>
     </array>
+
     <color name="golden">#ffd700</color>
+    <color name="color_green_light">#3BCF78</color>
 
 
 </resources>
