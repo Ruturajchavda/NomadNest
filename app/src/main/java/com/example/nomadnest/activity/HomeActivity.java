@@ -71,30 +71,22 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         Fragment fragment = null;
         FragmentManager manager = getSupportFragmentManager();
 
-        switch (item.getItemId()) {
-            case R.id.nav_home:
-                HomeFragment homeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
-                if (homeFragment == null) {
-                    fragment = new HomeFragment();
-                }
-                break;
-
-            case R.id.nav_calender:
-                CalenderFragment calenderFragment = (CalenderFragment) manager.findFragmentByTag(CalenderFragment.class.getName());
-                if (calenderFragment == null) {
-                    fragment = new CalenderFragment();
-                }
-                break;
-
-            case R.id.nave_profile:
-                ProfileFragment profileFragment = (ProfileFragment) manager.findFragmentByTag(ProfileFragment.class.getName());
-                if (profileFragment == null) {
-                    fragment = new ProfileFragment();
-                }
-                break;
-
+        if(item.getItemId() == R.id.nav_home){
+            HomeFragment homeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
+            if (homeFragment == null) {
+                fragment = new HomeFragment();
+            }
+        }else  if(item.getItemId() == R.id.nav_calender){
+            CalenderFragment calenderFragment = (CalenderFragment) manager.findFragmentByTag(CalenderFragment.class.getName());
+            if (calenderFragment == null) {
+                fragment = new CalenderFragment();
+            }
+        }else  if(item.getItemId() == R.id.nave_profile){
+            ProfileFragment profileFragment = (ProfileFragment) manager.findFragmentByTag(ProfileFragment.class.getName());
+            if (profileFragment == null) {
+                fragment = new ProfileFragment();
+            }
         }
-
         return loadFragment(fragment);
     }
 
