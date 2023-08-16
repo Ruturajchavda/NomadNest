@@ -26,6 +26,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_recommended">Recommended</string>
+    <string name="title_most_popular">Most Popular</string>
+    <string name="place_title_1">Banff National Park</string>
+    <string name="place_location_1">Alberta, Canada</string>
+    <string name="ratings">4.5</string>
 
 
 </resources>

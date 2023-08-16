@@ -29,7 +29,7 @@
         <item>@color/color_primary_dark</item>
         <item>@color/color_primary_dark</item>
     </array>
-
+    <color name="golden">#ffd700</color>
 
 
 </resources>

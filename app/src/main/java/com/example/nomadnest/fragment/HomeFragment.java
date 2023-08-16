@@ -2,6 +2,7 @@ package com.example.nomadnest.fragment;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -15,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 import android.widget.SearchView;
+import android.widget.TextView;
 
+import com.example.nomadnest.R;
 import com.example.nomadnest.adapter.SearchViewAdapter;
 import com.example.nomadnest.databinding.FragmentHomeBinding;
 import com.example.nomadnest.databinding.LayoutSearchPopupBinding;
@@ -25,7 +28,7 @@ import com.example.nomadnest.model.Places;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment implements SearchView.OnQueryTextListener, RecyclerViewItemInterface {
+public class HomeFragment extends Fragment implements SearchView.OnQueryTextListener, RecyclerViewItemInterface, View.OnClickListener {
 
 
     private FragmentHomeBinding binding;
@@ -80,12 +83,37 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
         //Set Popup SearchView
         popupView();
+
+        setModeSelection(true);
     }
 
     private void initializeListener() {
         binding.searchPlace.setOnQueryTextListener(this);
+        binding.textPopular.setOnClickListener(this);
+        binding.textRecommended.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == binding.textPopular.getId()) {
+            setModeSelection(true);
+        } else if (v.getId() == binding.textRecommended.getId()) {
+            setModeSelection(false);
+        }
+    }
+
+    private void setModeSelection(boolean isPopular) {
+        // Apply effects to the clicked TextView
+        if (isPopular) {
+            changeSelectionUI(binding.textPopular, binding.textRecommended, binding.dotViewPopular, binding.dotViewRecommended);
+        } else {
+            changeSelectionUI(binding.textRecommended, binding.textPopular, binding.dotViewRecommended, binding.dotViewPopular);
+        }
+    }
+
+
+
+    // Event Listener for SearchView
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;
@@ -146,4 +174,26 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     public void OnItemShare(int position, Object o) {
 
     }
+
+
+
+    // Change UI for Selected Text
+    private void changeSelectionUI(TextView textView1, TextView textView2, View view1, View view2) {
+        textView1.setSelected(true);
+        view1.setVisibility(View.VISIBLE);
+        textView2.setSelected(false);
+        view2.setVisibility(View.INVISIBLE);
+
+        textView1.setTextColor(getActivity().getResources().getColor(R.color.color_primary));
+        textView1.setScaleX(1.2f);
+        textView1.setScaleY(1.2f);
+        textView1.setTypeface(null, Typeface.BOLD); // Set to bold font style
+
+        textView2.setTextColor(getActivity().getResources().getColor(R.color.gray));
+        textView2.setScaleX(1f);
+        textView2.setScaleY(1f);
+        textView2.setTypeface(null, Typeface.NORMAL); // Set to bold font style
+    }
+
+
 }
