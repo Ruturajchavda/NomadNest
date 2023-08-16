@@ -1,18 +1,144 @@
 package com.example.nomadnest.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.example.nomadnest.R;
+import com.example.nomadnest.adapter.SearchViewAdapter;
+import com.example.nomadnest.databinding.ActivityHomeBinding;
+import com.example.nomadnest.databinding.ActivityIntroScreenBinding;
+import com.example.nomadnest.databinding.LayoutSearchPopupBinding;
+import com.example.nomadnest.databinding.SearchViewItemsBinding;
+import com.example.nomadnest.fragment.CalenderFragment;
+import com.example.nomadnest.fragment.HomeFragment;
+import com.example.nomadnest.fragment.ProfileFragment;
+import com.example.nomadnest.interfaces.HostInterface;
+import com.example.nomadnest.interfaces.RecyclerViewItemInterface;
+import com.example.nomadnest.model.Places;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HostInterface {
+
+    private static final String TAG = "HomeActivity";
+    private boolean doubleBackToExitPressedOnce = false;
+    private ActivityHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        Log.e("TAG", "onCreate: " );
+
+        // assign view to binding
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        init();
+    }
+
+    private void init()
+    {
+        changeCurrentFragmentTo(new HomeFragment());
+
+        BottomNavigationView navView = findViewById(R.id.bottomNavView);
+        navView.setOnNavigationItemSelectedListener(this);
+    }
+
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        Fragment fragment = null;
+        FragmentManager manager = getSupportFragmentManager();
+
+        switch (item.getItemId()) {
+            case R.id.nav_home:
+                HomeFragment homeFragment = (HomeFragment) manager.findFragmentByTag(HomeFragment.class.getName());
+                if (homeFragment == null) {
+                    fragment = new HomeFragment();
+                }
+                break;
+
+            case R.id.nav_calender:
+                CalenderFragment calenderFragment = (CalenderFragment) manager.findFragmentByTag(CalenderFragment.class.getName());
+                if (calenderFragment == null) {
+                    fragment = new CalenderFragment();
+                }
+                break;
+
+            case R.id.nave_profile:
+                ProfileFragment profileFragment = (ProfileFragment) manager.findFragmentByTag(ProfileFragment.class.getName());
+                if (profileFragment == null) {
+                    fragment = new ProfileFragment();
+                }
+                break;
+
+        }
+
+        return loadFragment(fragment);
+    }
+
+    private boolean loadFragment(Fragment fragment) {
+        invalidateOptionsMenu();
+        if (fragment != null) {
+            FragmentManager fManager = getSupportFragmentManager();
+            FragmentTransaction fTransaction = fManager.beginTransaction();
+            fTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
+            fTransaction.commit();
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void changeCurrentFragmentTo(Fragment fragment) {
+        invalidateOptionsMenu();
+        Log.e(TAG, "ChangeCurrentFragment");
+        FragmentManager fManager = getSupportFragmentManager();
+        FragmentTransaction fTransaction = fManager.beginTransaction();
+        fTransaction.replace(R.id.fragment_container, fragment, fragment.getClass().getName());
+        fTransaction.commit();
+    }
+
+    ////////////////////Exit From App///////////////////////
+    @Override
+    public void onBackPressed() {
+        //handle the back press :D close the drawer first and if the drawer is closed close the activity
+
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            System.exit(0);
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, R.string.press_back_again, Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }

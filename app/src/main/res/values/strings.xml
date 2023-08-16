@@ -13,7 +13,19 @@
     <string name="intro2_description">Discover limitless adventures with Wander Without Boundaries, our unleashed travel app. Explore the world like never before!</string>
     <string name="intro3_description">Discover, Plan, Go: Your ultimate travel companion for seamless adventures, providing expert guidance from start to finish!</string>
     <string name="intro4_description">Discover a stress-free life with our app - Explore More, Worry Less! Let it take care of everything for you!</string>
+
+    <string name="press_back_again">Double tap to exit!</string>
+
     <string name="lets_explore">Let\'s Explore</string>
+    <string name="welcome_title_1">Journey with Confidence</string>
+    <string name="welcome_title_2">Your Trusty Travel App Awaits!</string>
+    <string name="search_hint">Try \"Belgrade, Serbia\"</string>
+    <string name="title_home">Home</string>
+    <string name="title_account">Profile</string>
+    <string name="title_calender">Calender</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>
