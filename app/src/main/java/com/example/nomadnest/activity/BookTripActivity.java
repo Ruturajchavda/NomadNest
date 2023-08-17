@@ -137,6 +137,7 @@ public class BookTripActivity extends AppCompatActivity implements View.OnClickL
         bookings.setTripDuration(tripDuration);
         bookings.setTripType(tripType);
         bookings.setTripBudget(tripBudget);
+        bookings.setPlaceId(placeId);
 
         if(nomadNestDatabaseHelper.addBookingData(bookings)){
             showSuccessDialog();

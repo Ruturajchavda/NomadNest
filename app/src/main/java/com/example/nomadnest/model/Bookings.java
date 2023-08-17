@@ -11,19 +11,21 @@ public class Bookings implements Serializable {
     private int tripDuration;
     private String tripType;
     private float tripBudget;
+    private int placeId;
+
     public Bookings() {
 
     }
 
-    public Bookings(int bookingID, int totalPeople, Date travellingDate, int tripDuration, String tripType, float tripBudget) {
+    public Bookings(int bookingID, int totalPeople, Date travellingDate, int tripDuration, String tripType, float tripBudget, int placeId) {
         this.bookingID = bookingID;
         this.totalPeople = totalPeople;
         this.travellingDate = travellingDate;
         this.tripDuration = tripDuration;
         this.tripType = tripType;
         this.tripBudget = tripBudget;
+        this.placeId = placeId;
     }
-
 
     public int getBookingID() {
         return bookingID;
@@ -73,6 +75,14 @@ public class Bookings implements Serializable {
         this.tripBudget = tripBudget;
     }
 
+    public int getPlaceId() {
+        return placeId;
+    }
+
+    public void setPlaceId(int placeId) {
+        this.placeId = placeId;
+    }
+
     @Override
     public String toString() {
         return "Bookings{" +
@@ -82,6 +92,7 @@ public class Bookings implements Serializable {
                 ", tripDuration=" + tripDuration +
                 ", tripType='" + tripType + '\'' +
                 ", tripBudget=" + tripBudget +
+                ", placeId=" + placeId +
                 '}';
     }
 }

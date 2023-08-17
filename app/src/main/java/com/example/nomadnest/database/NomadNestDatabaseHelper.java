@@ -55,15 +55,16 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
     public static final String COL_TRAVELLING_DATE = "travellingDate";
     public static final String COL_TRIP_DURATION = "tripDuration";
     public static final String COL_TRIP_TYPE = "tripType";
-    public static final String COL_TRIP_BUDGET= "tripBudget";
+    public static final String COL_TRIP_BUDGET = "tripBudget";
 
     private static final String CREATE_TABLE_BOOKINGS = "CREATE TABLE " + TABLE_BOOKINGS + " (" +
-                    COL_BOOKING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    COL_TOTAL_PEOPLE + " INTEGER NOT NULL, " +
-                    COL_TRAVELLING_DATE + " DATE NOT NULL, " +
-                    COL_TRIP_DURATION + " INTEGER NOT NULL, " +
-                    COL_TRIP_TYPE + " TEXT NOT NULL, " +
-                    COL_TRIP_BUDGET + " FLOAT NOT NULL);";
+            COL_BOOKING_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            COL_TOTAL_PEOPLE + " INTEGER NOT NULL, " +
+            COL_TRAVELLING_DATE + " DATE NOT NULL, " +
+            COL_TRIP_DURATION + " INTEGER NOT NULL, " +
+            COL_TRIP_TYPE + " TEXT NOT NULL, " +
+            COL_TRIP_BUDGET + " FLOAT NOT NULL, " +
+            COL_PLACE_ID + " INTEGER NOT NULL);";
     private static final String DROP_TABLE_BOOKINGS = "DROP TABLE IF EXISTS " + TABLE_BOOKINGS;
 
     public NomadNestDatabaseHelper(Context context) {
@@ -178,6 +179,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(COL_TRIP_DURATION, booking.getTripDuration());
         contentValues.put(COL_TRIP_TYPE, booking.getTripType());
         contentValues.put(COL_TRIP_BUDGET, booking.getTripBudget());
+        contentValues.put(COL_PLACE_ID, booking.getPlaceId());
 
         long result = db.insert(TABLE_BOOKINGS, null, contentValues);
         return (result != -1);
@@ -198,8 +200,9 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") int tripDuration = cursor.getInt(cursor.getColumnIndex(COL_TRIP_DURATION));
                 @SuppressLint("Range") String tripType = cursor.getString(cursor.getColumnIndex(COL_TRIP_TYPE));
                 @SuppressLint("Range") float tripBudget = cursor.getFloat(cursor.getColumnIndex(COL_TRIP_BUDGET));
+                @SuppressLint("Range") int placeId = cursor.getInt(cursor.getColumnIndex(COL_PLACE_ID));
 
-                Bookings booking = new Bookings(bookingId, totalPeople, formatStringToDate(travellingDate), tripDuration, tripType,tripBudget);
+                Bookings booking = new Bookings(bookingId, totalPeople, formatStringToDate(travellingDate), tripDuration, tripType, tripBudget,placeId);
                 bookingsArrayList.add(booking);
             } while (cursor.moveToNext());
 
@@ -214,7 +217,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] columns = {
                 COL_TOTAL_PEOPLE, COL_TRAVELLING_DATE,
-                COL_TRIP_DURATION, COL_TRIP_TYPE,COL_TRIP_BUDGET
+                COL_TRIP_DURATION, COL_TRIP_TYPE, COL_TRIP_BUDGET
         };
         String selection = COL_BOOKING_ID + " = ?";
         String[] selectionArgs = {String.valueOf(bookingId)};
@@ -227,6 +230,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
             @SuppressLint("Range") int tripDuration = cursor.getInt(cursor.getColumnIndex(COL_TRIP_DURATION));
             @SuppressLint("Range") String tripType = cursor.getString(cursor.getColumnIndex(COL_TRIP_TYPE));
             @SuppressLint("Range") float tripBudget = cursor.getFloat(cursor.getColumnIndex(COL_TRIP_BUDGET));
+            @SuppressLint("Range") int placeId = cursor.getInt(cursor.getColumnIndex(COL_PLACE_ID));
 
 
             booking = new Bookings();
@@ -235,6 +239,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
             booking.setTripDuration(tripDuration);
             booking.setTripType(tripType);
             booking.setTripBudget(tripBudget);
+            booking.setPlaceId(placeId);
             cursor.close();
         }
 
