@@ -104,6 +104,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
         ArrayList<Places> placesArrayList = new ArrayList<Places>();
         SQLiteDatabase db = this.getReadableDatabase();
 
+
         Cursor cursor = db.query(TABLE_PLACE, null, null, null, null, null, null);
 
         if (cursor != null && cursor.moveToFirst()) {
