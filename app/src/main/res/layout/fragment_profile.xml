@@ -1,14 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragment.ProfileFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/large_margin"
+        android:orientation="vertical">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="155dp"
+            android:layout_height="155dp"
+            app:cardCornerRadius="250dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/white">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                app:cardCornerRadius="250dp"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivProfilePicture"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:src="@drawable/profile_picture"
+                    android:scaleType="centerCrop"/>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tvUsername"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="center"
+            android:text="@string/user"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/title_font"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/test_email"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/large_font" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:gravity="start"
+            android:text="@string/settings"
+            android:textColor="@color/color_primary"
+            android:textSize="@dimen/title_font"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvEditProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/rounded_gray"
+            android:drawablePadding="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/edit_profile"
+            app:drawableEndCompat="@drawable/go_icon"
+            app:drawableStartCompat="@drawable/edit_profile" />
+
+        <TextView
+            android:id="@+id/tvPrivacy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/rounded_gray"
+            android:drawablePadding="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/privacy_policy_text"
+            app:drawableEndCompat="@drawable/go_icon"
+            app:drawableStartCompat="@drawable/baseline_privacy_tip_24" />
+
+        <TextView
+            android:id="@+id/tvTOS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/rounded_gray"
+            android:drawablePadding="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/terms_of_service"
+            app:drawableEndCompat="@drawable/go_icon"
+            app:drawableStartCompat="@drawable/terms_icon" />
+
+        <TextView
+            android:id="@+id/tvSupport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/rounded_gray"
+            android:drawablePadding="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/support"
+            app:drawableEndCompat="@drawable/go_icon"
+            app:drawableStartCompat="@drawable/baseline_contact_support_24" />
+
+        <TextView
+            android:id="@+id/tvLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_margin"
+            android:background="@drawable/rounded_gray"
+            android:drawablePadding="@dimen/medium_margin"
+            android:padding="@dimen/medium_margin"
+            android:text="@string/logout"
+            android:textColor="@color/red"
+            app:drawableStartCompat="@drawable/baseline_logout_24" />
+
+
+    </LinearLayout>
 </FrameLayout>

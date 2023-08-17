@@ -45,7 +45,21 @@
     <string name="name">Full Name</string>
     <string name="already_have_account">Already have an account?  </string>
     <string name="confirm_password">Confirm Password</string>
-
+    <string name="user">User</string>
+    <string name="test_email">user@example.com</string>
+    <string name="settings">Settings</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notification">Notification</string>
+    <string name="privacy_policy_text">Privacy Policy</string>
+    <string name="terms_of_service">Terms Of Service</string>
+    <string name="support">Support</string>
+    <string name="logout">Logout</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="edit_profile_image">Edit Profile Picture</string>
+    <string name="open_camera_tile">Open Camera</string>
+    <string name="open_camera_question">Are you sure you want to open the camera?</string>
+    <string name="user_details">user_details</string>
+    <string name="update">Update</string>
 
 
 </resources>

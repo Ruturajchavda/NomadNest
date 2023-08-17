@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NomadNest"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.PrivacyTOCActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.EditProfileActivity"
+            android:exported="false"
+            android:label="@string/edit_profile" />
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />
