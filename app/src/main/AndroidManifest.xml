@@ -13,19 +13,12 @@
         android:theme="@style/Theme.NomadNest"
         tools:targetApi="31">
         <activity
-            android:name=".BookTripActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:name=".activity.BookTripActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.PlaceDetailsActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+            android:exported="false" />
+
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />

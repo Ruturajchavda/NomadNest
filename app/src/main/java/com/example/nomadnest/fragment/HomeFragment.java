@@ -22,10 +22,12 @@ import android.widget.Toast;
 
 import com.example.nomadnest.R;
 import com.example.nomadnest.activity.HomeActivity;
+import com.example.nomadnest.activity.MainActivity;
 import com.example.nomadnest.activity.PlaceDetailsActivity;
 import com.example.nomadnest.adapter.PlacesAdapter;
 import com.example.nomadnest.adapter.SearchViewAdapter;
 import com.example.nomadnest.constants.Extras;
+import com.example.nomadnest.database.NomadNestDatabaseHelper;
 import com.example.nomadnest.databinding.FragmentHomeBinding;
 import com.example.nomadnest.databinding.LayoutSearchPopupBinding;
 import com.example.nomadnest.interfaces.HostInterface;
@@ -42,9 +44,12 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
     private SearchViewAdapter searchViewAdapter;
     private ArrayList<Places> searchItemList = new ArrayList<>();
+    private ArrayList<Places> placesArrayList = new ArrayList<>();
     private PopupWindow popupWindow;
 
     private PlacesAdapter placesAdapter;
+
+    private NomadNestDatabaseHelper nomadNestDatabaseHelper;
 
     @Override
     public void onAttach(Context context) {
@@ -74,19 +79,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     }
 
     private void init() {
-        // Add example data to itemList
-        Places places2 = new Places(2, "The Butchart Gardens", "Brentwood Bay, BC", "4.7", R.drawable.travel_2);
-        searchItemList.add(places2);
-        Places places1 = new Places(1, "Montmorency Falls", "Quebec, Canada", "4.6", R.drawable.travel_1);
-        searchItemList.add(places1);
-        Places places3 = new Places(3, "Toronto Islands", "Lake Ontario", "4.7", R.drawable.travel_3);
-        searchItemList.add(places3);
-        Places places4 = new Places(4, "Algonquin Provincial Park", "Ontario, Canada", "5.0", R.drawable.travel_4);
-        searchItemList.add(places4);
-        Places places5 = new Places(5, "Rideau Canal", "Kingston, Ontario", "4.7", R.drawable.travel_5);
-        searchItemList.add(places5);
-        Places places6 = new Places(6, "Niagara Falls", "Niagara, Canada", "4.8", R.drawable.travel_6);
-        searchItemList.add(places6);
+        //Initialize Database
+        nomadNestDatabaseHelper = new NomadNestDatabaseHelper(getActivity());
 
         // set click listener to all view
         initializeListener();
@@ -97,7 +91,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         setModeSelection(true);
 
         //Populate Places Data
-        bindPlacesAdapter();
+        populateData(true);
+
     }
 
     private void initializeListener() {
@@ -119,8 +114,10 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         // Apply effects to the clicked TextView
         if (isPopular) {
             changeSelectionUI(binding.textPopular, binding.textRecommended, binding.dotViewPopular, binding.dotViewRecommended);
+            populateData(true);
         } else {
             changeSelectionUI(binding.textRecommended, binding.textPopular, binding.dotViewRecommended, binding.dotViewPopular);
+            populateData(false);
         }
     }
 
@@ -153,6 +150,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         bindSearchViewAdapter(popupBinding.rvSearch);
     }
 
+
     // Initialize and set up RecyclerView and Adapter for SearchView
     @SuppressLint("NotifyDataSetChanged")
     private void bindSearchViewAdapter(RecyclerView recyclerView) {
@@ -163,11 +161,31 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
         searchViewAdapter.setItemClickListener(this);
     }
 
+    //Populate Data
+    private void populateData(boolean isPopular) {
+        placesArrayList.clear();
+
+
+        for (int i = 0; i < nomadNestDatabaseHelper.getAllPlaces().size(); i++) {
+            if (isPopular) {
+                if (nomadNestDatabaseHelper.getAllPlaces().get(i).isPopular()) {
+                    placesArrayList.add(nomadNestDatabaseHelper.getAllPlaces().get(i));
+                }
+            } else {
+                if (!nomadNestDatabaseHelper.getAllPlaces().get(i).isPopular()) {
+                    placesArrayList.add(nomadNestDatabaseHelper.getAllPlaces().get(i));
+                }
+            }
+        }
+
+        bindPlacesAdapter();
+    }
+
     // Initialize and set up RecyclerView and Adapter
     @SuppressLint("NotifyDataSetChanged")
     private void bindPlacesAdapter() {
-        placesAdapter = new PlacesAdapter(searchItemList,getActivity());
-        binding.rvPlaces.setLayoutManager(new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL, false));
+        placesAdapter = new PlacesAdapter(placesArrayList, getActivity());
+        binding.rvPlaces.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
         binding.rvPlaces.setAdapter(placesAdapter);
         placesAdapter.notifyDataSetChanged();
         placesAdapter.setItemClickListener(this);

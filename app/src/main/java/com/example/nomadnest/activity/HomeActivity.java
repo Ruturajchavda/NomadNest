@@ -5,39 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.LayoutInflater;
+
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.PopupWindow;
-import android.widget.SearchView;
+
 import android.widget.Toast;
 
 import com.example.nomadnest.R;
-import com.example.nomadnest.adapter.SearchViewAdapter;
+
 import com.example.nomadnest.databinding.ActivityHomeBinding;
-import com.example.nomadnest.databinding.ActivityIntroScreenBinding;
-import com.example.nomadnest.databinding.LayoutSearchPopupBinding;
-import com.example.nomadnest.databinding.SearchViewItemsBinding;
 import com.example.nomadnest.fragment.CalenderFragment;
 import com.example.nomadnest.fragment.HomeFragment;
 import com.example.nomadnest.fragment.ProfileFragment;
 import com.example.nomadnest.interfaces.HostInterface;
-import com.example.nomadnest.interfaces.RecyclerViewItemInterface;
-import com.example.nomadnest.model.Places;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, HostInterface {
 

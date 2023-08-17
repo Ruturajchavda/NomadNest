@@ -27,8 +27,6 @@ public class PlaceDetailsActivity extends AppCompatActivity implements View.OnCl
         Bundle bundle = getIntent().getBundleExtra(Extras.EXTRA_FRAGMENT_BUNDLE);
         if (bundle != null) {
             places = (Places) bundle.getSerializable(Extras.EXTRA_ATTACHMENT);
-            //setToolbarTitle(subCategory.getSubCategoryName());
-            Log.e("TAG", "onCreate: " + places);
         } else {
             places = new Places();
         }
@@ -44,6 +42,7 @@ public class PlaceDetailsActivity extends AppCompatActivity implements View.OnCl
 
     private void initializeListener() {
         binding.cardViewBack.setOnClickListener(this);
+        binding.btnBook.setOnClickListener(this);
     }
 
 
@@ -52,6 +51,9 @@ public class PlaceDetailsActivity extends AppCompatActivity implements View.OnCl
         binding.textPlaceTitle.setText(places.getPlaceName());
         binding.textPlaceLoction.setText(places.getPlaceLocation());
         binding.textPlaceRating.setText(places.getRatings());
+        binding.textPlaceDesc.setText(places.getPlaceDesc());
+        binding.textPlaceCategory.setText(places.getCategory());
+        binding.textPrice.setText(String.format("$%s", places.getEstimatedPrice()));
         binding.imagePlace.setImageDrawable(getResources().getDrawable(places.getPlaceImage()));
     }
 
@@ -59,6 +61,10 @@ public class PlaceDetailsActivity extends AppCompatActivity implements View.OnCl
     public void onClick(View v) {
         if (v.getId() == binding.cardViewBack.getId()) {
             finish();
+        } else if (v.getId() == binding.btnBook.getId()) {
+            Intent intent = new Intent(PlaceDetailsActivity.this, BookTripActivity.class);
+            intent.putExtra(Extras.EXTRA_ATTACHMENT, places.getPlaceId());
+            startActivity(intent);
         }
     }
 }

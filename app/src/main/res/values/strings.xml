@@ -61,6 +61,26 @@
     <string name="category_countryside">Countryside</string>
 
     <string name="demo_price">$1290</string>
-    <string name="price_for_people">Price for 2 People</string>
+    <string name="price_for_people">Price for 1 People</string>
     <string name="book_tour">Book a Tour</string>
+    <string name="hint_total_persons">No. of People</string>
+    <string name="hint_travelling_date">Travelling Date</string>
+    <string name="title_trip_type">Trip Type</string>
+    <string name="hint_friend_trip">Friends Trip</string>
+    <string name="hint_family_trip">Family Trip</string>
+    <string name="title_book_now">Book Now</string>
+    <string name="trip_total_cost">Trip Total Cost</string>
+
+    <!-- Error Strings -->
+    <string name="err_field_required">This field is required</string>
+    <string name="err_fill_all_fields">Please fill all the details</string>
+    <string name="err_select_date">Please select the Travelling Date</string>
+    <string name="err_no_trip_type">Please select at least one Trip Type!</string>
+    <string name="err_value_zero">Please enter the value more than 0!</string>
+    <string name="err_select_duration">Please select your Trip Duration</string>
+    <string name="err_booking_failed">Booking Failed! Please try again.</string>
+    <!-- Error Strings -->
+
+    <string name="hint_solo_trip">Solo Trip</string>
+    <string name="trip_booked_successfully">Trip Booked Successfully</string>
 </resources>

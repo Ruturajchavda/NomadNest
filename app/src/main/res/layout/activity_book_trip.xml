@@ -1,9 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="@dimen/medium_margin"
+    android:id="@+id/layoutMain"
     tools:context=".activity.BookTripActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnBookNow"
+        android:padding="5dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtLayTotalPeople"
+                style="@style/style_input"
+                android:hint="@string/hint_total_persons">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTotalPeople"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txtLayTravelingDate"
+                style="@style/style_input"
+                android:hint="@string/hint_travelling_date">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtTravelingDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:inputType="date" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Spinner
+                android:id="@+id/spnDuration"
+                style="@style/style_spinner"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:background="@drawable/spn_text_border" />
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/style_text_title"
+                android:layout_marginTop="@dimen/medium_margin"
+                android:text="@string/title_trip_type" />
+
+            <RadioGroup
+                android:id="@+id/rgTripType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <RadioButton
+                    android:id="@+id/rdFamilyTrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/hint_family_trip" />
+
+                <RadioButton
+                    android:id="@+id/rdFriendsTrip"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/hint_friend_trip" />
+
+            </RadioGroup>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/style_text_title"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dim_25"
+                android:text="@string/trip_total_cost"
+                android:textStyle="normal" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textPrice"
+                style="@style/style_text_title"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/dim_2"
+                android:text="@string/demo_price"
+                android:textColor="@color/color_green_light"
+                android:textSize="@dimen/font_20" />
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnBookNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/large_margin"
+        android:background="@drawable/rounded_button_primary"
+        android:text="@string/title_book_now"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+
+</RelativeLayout>
