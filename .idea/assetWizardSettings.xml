@@ -3,6 +3,11 @@
   <component name="WizardSettings">
     <option name="children">
       <map>
+        <entry key="imageWizard">
+          <value>
+            <PersistentState />
+          </value>
+        </entry>
         <entry key="vectorWizard">
           <value>
             <PersistentState>
@@ -18,6 +23,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+                                      <entry key="url" value="file:$USER_HOME$/Library/Android/sdk/icons/material/materialicons/logout/baseline_logout_24.xml" />
                                       <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_forward_ios/baseline_arrow_forward_ios_24.xml" />
                                     </map>
                                   </option>
@@ -30,6 +36,9 @@
                           <map>
                             <entry key="outputName" value="ic_arrow_righ" />
                             <entry key="sourceFile" value="D:\Conestoga\Level 2\Android\Projects\NomadNest" />
+                            <entry key="color" value="ff0000" />
+                            <entry key="outputName" value="baseline_logout_24" />
+                            <entry key="sourceFile" value="/D:\Conestoga\Level 2\Android\Projects\NomadNest" />
                           </map>
                         </option>
                       </PersistentState>

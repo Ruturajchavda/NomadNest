@@ -54,6 +54,23 @@
     <string name="desc_algonquin_provincial_park">Algonquin Provincial Park is in southeastern Ontario, Canada. Its forests, rivers and numerous lakes, including the large Lake of Two Rivers, are home to moose, bears and common loons. The park’s many trails include the Whiskey Rapids Trail, along the Oxtongue River, and the Barron Canyon Trail, with views from the north rim. The Algonquin Logging Museum features a re-created camp and a steam-powered amphibious tug.</string>
     <string name="desc_rideau_canal">The Rideau Canal is a 202 kilometre long canal that links the Ottawa River, at Ottawa, with the Saint Lawrence River at Kingston, Ontario, Canada.</string>
     <string name="desc_niagara_falls">Niagara Falls, Ontario, is a Canadian city at the famous waterfalls of the same name, linked with the U.S. by the Rainbow Bridge. Its site on the Niagara River\'s western shore overlooks the Horseshoe Falls, the cascades\' most expansive section. Elevators take visitors to a lower, wetter vantage point behind the falls. A cliffside park features a promenade alongside 520-ft.-high Skylon Tower with an observation deck</string>
+    <string name="user">User</string>
+    <string name="test_email">user@example.com</string>
+    <string name="settings">Settings</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notification">Notification</string>
+    <string name="privacy_policy_text">Privacy Policy</string>
+    <string name="terms_of_service">Terms Of Service</string>
+    <string name="support">Support</string>
+    <string name="logout">Logout</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="edit_profile_image">Edit Profile Picture</string>
+    <string name="open_camera_tile">Open Camera</string>
+    <string name="open_camera_question">Are you sure you want to open the camera?</string>
+    <string name="user_details">user_details</string>
+    <string name="update">Update</string>
+    <string name="trip">Trip Destination</string>
+    <string name="trip_description">5 Days trip - 4 people</string>
 
     <string name="category_mountain">Mountains</string>
     <string name="category_nature">Nature</string>
