@@ -49,7 +49,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             @Override
             public void onClick(View v) {
                 if (viewItemInterface != null) {
-                    viewItemInterface.OnItemMoved(holder.getAdapterPosition(), category);
+                    viewItemInterface.OnItemClick(holder.getAdapterPosition(), category);
                 }
             }
         });

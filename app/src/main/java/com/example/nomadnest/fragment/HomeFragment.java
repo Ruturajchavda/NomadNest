@@ -42,11 +42,8 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
     private FragmentHomeBinding binding;
     HostInterface hostInterface;
 
-    private SearchViewAdapter searchViewAdapter;
-    private ArrayList<Places> searchItemList = new ArrayList<>();
     private ArrayList<Places> placesArrayList = new ArrayList<>();
     private ArrayList<Category> categoryArrayList = new ArrayList<>();
-    private PopupWindow popupWindow;
 
     private PlacesAdapter placesAdapter;
     private CategoryAdapter categoryAdapter;
@@ -86,9 +83,6 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
         // set click listener to all view
         initializeListener();
-
-        //Set Popup SearchView
-        popupSearchView();
 
         setModeSelection(true);
 
@@ -140,35 +134,7 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        /*if (!newText.isEmpty()) {
-            searchViewAdapter.getFilter().filter(newText);
-            popupWindow.showAsDropDown(binding.searchPlace);
-        } else {
-            popupWindow.dismiss();
-        }*/
         return false;
-    }
-
-    //Setup Popup RecyclerView
-    private void popupSearchView() {
-        // Initialize PopupWindow
-        LayoutSearchPopupBinding popupBinding = LayoutSearchPopupBinding.inflate(getLayoutInflater());
-        View popupView = popupBinding.getRoot();
-        popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setFocusable(false);
-
-        bindSearchViewAdapter(popupBinding.rvSearch);
-    }
-
-
-    // Initialize and set up RecyclerView and Adapter for SearchView
-    @SuppressLint("NotifyDataSetChanged")
-    private void bindSearchViewAdapter(RecyclerView recyclerView) {
-        searchViewAdapter = new SearchViewAdapter(searchItemList);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(searchViewAdapter);
-        searchViewAdapter.notifyDataSetChanged();
-        searchViewAdapter.setItemClickListener(this);
     }
 
     //Populate Data for Place List
@@ -235,15 +201,6 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
 
     @Override
     public void OnItemClick(int position, Object o) {
-        if (o != null && o instanceof Places) {
-            /*Places places = (Places) o;
-            binding.searchPlace.setQuery(places.getPlaceName(), false);
-            popupWindow.dismiss();*/
-        }
-    }
-
-    @Override
-    public void OnItemMoved(int position, Object o) {
         if (o != null && o instanceof Category) {
             Category category = (Category) o;
             Intent intent = new Intent(getActivity(), SearchListActivity.class);
@@ -251,6 +208,11 @@ public class HomeFragment extends Fragment implements SearchView.OnQueryTextList
             intent.putExtra(Extras.EXTRA_ATTACHMENT, category.getCategoryName());
             getActivity().startActivity(intent);
         }
+    }
+
+    @Override
+    public void OnItemMoved(int position, Object o) {
+
     }
 
     @Override

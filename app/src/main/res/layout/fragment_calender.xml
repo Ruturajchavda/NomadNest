@@ -23,7 +23,8 @@
         app:selectedItem_background="@drawable/selected_date_background"
         app:buttonLeft_drawableTintColor="@android:color/black"
         app:buttonRight_drawableTintColor="@android:color/black"
-        app:expandIconColor="@android:color/black">
+        app:expandIconColor="@android:color/black"
+        android:layout_marginTop="@dimen/dim_15">
     </com.shrikanthravi.collapsiblecalendarview.widget.CollapsibleCalendar>
 
 
@@ -34,7 +35,8 @@
             android:layout_gravity="start"
             tools:listitem="@layout/layout_calendar_event_view"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="vertical" />
+            android:orientation="vertical"
+            android:padding="@dimen/medium_margin"/>
 
     </LinearLayout>
 

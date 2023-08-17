@@ -2,11 +2,9 @@ package com.example.nomadnest.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -14,8 +12,9 @@ import android.view.View;
 
 import com.example.nomadnest.R;
 import com.example.nomadnest.databinding.ActivityEditProfileBinding;
-import com.example.nomadnest.model.Preference;
+
 import com.example.nomadnest.model.User;
+import com.example.nomadnest.session.SessionManager;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
@@ -32,8 +31,8 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         binding = ActivityEditProfileBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if(Preference.getUserDetail(this) != null)
-            currentUser = Preference.getUserDetail(this);
+        if(SessionManager.getUserDetail(this) != null)
+            currentUser = SessionManager.getUserDetail(this);
         else
             currentUser = new User();
         setUserDetail();
@@ -61,7 +60,7 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
             currentUser.setEmail(binding.etEmail.getText().toString());
             currentUser.setPhone(binding.etPhone.getText().toString());
             currentUser.setName(binding.etName.getText().toString());
-            Preference.saveUserDetail(this,currentUser);
+            SessionManager.saveUserDetail(this,currentUser);
             onBackPressed();
         }
     }

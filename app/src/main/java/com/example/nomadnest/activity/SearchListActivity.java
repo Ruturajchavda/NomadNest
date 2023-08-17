@@ -7,15 +7,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.SearchView;
+import android.view.MenuItem;
 
-import com.example.nomadnest.adapter.PlacesAdapter;
 import com.example.nomadnest.adapter.SearchListAdapter;
-import com.example.nomadnest.adapter.SearchViewAdapter;
+
 import com.example.nomadnest.constants.Extras;
 import com.example.nomadnest.database.NomadNestDatabaseHelper;
-import com.example.nomadnest.databinding.ActivityMainBinding;
 import com.example.nomadnest.databinding.ActivitySearchListBinding;
 import com.example.nomadnest.interfaces.RecyclerViewItemInterface;
 import com.example.nomadnest.model.Places;
@@ -37,6 +34,7 @@ public class SearchListActivity extends AppCompatActivity implements RecyclerVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // assign view to binding
         binding = ActivitySearchListBinding.inflate(getLayoutInflater());
@@ -87,6 +85,15 @@ public class SearchListActivity extends AppCompatActivity implements RecyclerVie
         binding.rvPlaces.setAdapter(searchListAdapter);
         searchListAdapter.notifyDataSetChanged();
         searchListAdapter.setItemClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -2,44 +2,57 @@ package com.example.nomadnest.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
 import com.example.nomadnest.R;
 import com.example.nomadnest.database.NomadNestDatabaseHelper;
-import com.example.nomadnest.databinding.ActivityHomeBinding;
-import com.example.nomadnest.databinding.ActivityMainBinding;
+import com.example.nomadnest.databinding.ActivitySplashBinding;
 import com.example.nomadnest.model.Places;
+import com.example.nomadnest.session.SessionManager;
 
-public class MainActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
+    private ActivitySplashBinding binding;
     private NomadNestDatabaseHelper nomadNestDatabaseHelper;
+    private int splashTimeOut = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // assign view to binding
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         init();
 
-        startActivity(new Intent(MainActivity.this, IntroScreenActivity.class));
-        finish();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (SessionManager.getInstance().isShowIntro()) {
+                    startActivity(new IntroScreenActivity());
+                } else {
+                    startActivity(new LoginActivity());
+                }
+            }
+        }, splashTimeOut);
     }
 
     private void init() {
-        nomadNestDatabaseHelper = new NomadNestDatabaseHelper(MainActivity.this);
+        nomadNestDatabaseHelper = new NomadNestDatabaseHelper(SplashActivity.this);
 
-        //addPlaceData();
+        if (SessionManager.getInstance().isFirstTime()) {
+            addPlaceData();
+            SessionManager.getInstance().createLaunchSession();
+            Log.e("TAG", "init: " + "First Time");
+        }
     }
 
     private void addPlaceData() {
-        Places places = new Places();
-        nomadNestDatabaseHelper.addPlaceData(places);
-
         Places places1 = new Places(1, "The Butchart Gardens", getResources().getString(R.string.desc_butchart_gardens),
                 "Brentwood Bay, BC", "4.7", R.drawable.travel_2, 650, getResources().getString(R.string.category_nature), true);
         nomadNestDatabaseHelper.addPlaceData(places1);
@@ -60,8 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 "Kingston, Ontario", "4.7", R.drawable.travel_5, 560, getResources().getString(R.string.category_countryside), false);
         nomadNestDatabaseHelper.addPlaceData(places5);
 
-        Places places6 = new Places(6, "Niagara Falls",getResources().getString(R.string.desc_niagara_falls),
+        Places places6 = new Places(6, "Niagara Falls", getResources().getString(R.string.desc_niagara_falls),
                 "Niagara, Canada", "4.8", R.drawable.travel_6, 840, getResources().getString(R.string.category_falls), false);
         nomadNestDatabaseHelper.addPlaceData(places6);
+    }
+
+    private void startActivity(Activity activity) {
+        Intent intent = new Intent(SplashActivity.this, activity.getClass());
+        startActivity(intent);
+        finish();
     }
 }

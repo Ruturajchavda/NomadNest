@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.nomadnest.R;
 import com.example.nomadnest.activity.EditProfileActivity;
 import com.example.nomadnest.activity.PrivacyTOCActivity;
-import com.example.nomadnest.databinding.FragmentHomeBinding;
 import com.example.nomadnest.databinding.FragmentProfileBinding;
-import com.example.nomadnest.model.Preference;
+import com.example.nomadnest.session.SessionManager;
 
 public class ProfileFragment extends Fragment implements View.OnClickListener {
 
@@ -60,8 +58,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onResume() {
         super.onResume();
-        if (Preference.getUserDetail(getActivity()) != null)
-            if (Preference.getUserDetail(getActivity()).getProfilePicture() != null)
-                binding.ivProfilePicture.setImageBitmap(Preference.getUserDetail(getActivity()).getProfilePicture());
+        if (SessionManager.getUserDetail(getActivity()) != null)
+            if (SessionManager.getUserDetail(getActivity()).getProfilePicture() != null)
+                binding.ivProfilePicture.setImageBitmap(SessionManager.getUserDetail(getActivity()).getProfilePicture());
     }
 }

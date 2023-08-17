@@ -44,83 +44,94 @@
                 android:queryHint="@string/search_hint" />
         </LinearLayout>
 
-        <LinearLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingStart="@dimen/dim_15"
-            android:paddingEnd="@dimen/dim_15">
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/layPopular"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textPopular"
-                    style="@style/style_text_title"
-                    android:layout_margin="@dimen/small_margin"
-                    android:text="@string/title_most_popular"
-                    android:textColor="@color/gray"
-                    android:textStyle="normal" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/dim_15"
+                    android:paddingEnd="@dimen/dim_15">
 
-                <View
-                    android:id="@+id/dotViewPopular"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/shape_dot"
-                    android:visibility="invisible" />
+                    <LinearLayout
+                        android:id="@+id/layPopular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
+                        <TextView
+                            android:id="@+id/textPopular"
+                            style="@style/style_text_title"
+                            android:layout_margin="@dimen/small_margin"
+                            android:text="@string/title_most_popular"
+                            android:textColor="@color/gray"
+                            android:textStyle="normal" />
+
+                        <View
+                            android:id="@+id/dotViewPopular"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/shape_dot"
+                            android:visibility="invisible" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/layRecommended"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textRecommended"
+                            style="@style/style_text_title"
+                            android:layout_margin="@dimen/small_margin"
+                            android:text="@string/title_recommended"
+                            android:textColor="@color/gray"
+                            android:textStyle="normal" />
+
+                        <View
+                            android:id="@+id/dotViewRecommended"
+                            android:layout_width="8dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/shape_dot"
+                            android:visibility="invisible" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPlaces"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_places" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCategory"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/dim_15"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_category" />
             </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/layRecommended"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textRecommended"
-                    style="@style/style_text_title"
-                    android:layout_margin="@dimen/small_margin"
-                    android:text="@string/title_recommended"
-                    android:textColor="@color/gray"
-                    android:textStyle="normal" />
-
-                <View
-                    android:id="@+id/dotViewRecommended"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:layout_marginTop="3dp"
-                    android:background="@drawable/shape_dot"
-                    android:visibility="invisible" />
-
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPlaces"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_places" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategory"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/dim_15"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_category" />
-
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 
 </FrameLayout>

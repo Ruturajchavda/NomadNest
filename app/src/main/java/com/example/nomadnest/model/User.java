@@ -9,6 +9,26 @@ public class User implements Serializable {
     String email;
     String phone;
     Bitmap profilePicture;
+    private String password;
+
+    public User(){
+
+    }
+
+    public User(String name, String email, String phone, Bitmap profilePicture, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.profilePicture = profilePicture;
+        this.password = password;
+    }
+
+    public User(String name, String email, String phone, String password) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+    }
 
     public String getName() {
         return name;
@@ -40,5 +60,24 @@ public class User implements Serializable {
 
     public void setProfilePicture(Bitmap profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", profilePicture=" + profilePicture +
+                ", password='" + password + '\'' +
+                '}';
     }
 }

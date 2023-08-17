@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="@dimen/large_margin"
+    android:id="@+id/layoutMain"
     tools:context=".activity.SignupActivity">
 
     <RelativeLayout
@@ -36,6 +37,23 @@
                 android:textSize="@dimen/medium_font" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/etNameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/large_margin">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:textColorHint="@color/gainsboro"
+                    android:textSize="@dimen/medium_font" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etEmailLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,21 +71,23 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/etNameLayout"
+                android:id="@+id/etPhoneLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/large_margin">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etName"
+                    android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/name"
-                    android:inputType="text"
+                    android:hint="@string/phone_number"
+                    android:inputType="number"
+                    android:maxEms="10"
                     android:textColorHint="@color/gainsboro"
                     android:textSize="@dimen/medium_font" />
 
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etPasswordLayout"
@@ -118,7 +138,7 @@
                     android:gravity="center"
                     android:minWidth="0dp"
                     android:minHeight="0dp"
-                    app:buttonTint="@color/color_primary"/>
+                    app:buttonTint="@color/color_primary" />
 
                 <TextView
                     android:layout_width="wrap_content"

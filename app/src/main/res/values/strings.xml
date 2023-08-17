@@ -96,8 +96,16 @@
     <string name="err_value_zero">Please enter the value more than 0!</string>
     <string name="err_select_duration">Please select your Trip Duration</string>
     <string name="err_booking_failed">Booking Failed! Please try again.</string>
+    <string name="err_no_user">Invalid Credentials or user does not exist!</string>
+    <string name="err_already_exist">User with this email address is already exist!</string>
+    <string name="err_pass_not_match">Passwords do not match!</string>
+    <string name="err_valid_mail">Please enter a valid email address</string>
+    <string name="err_valid_phone">Please enter valid phone number with 10 digits!</string>
+    <string name="err_checked_not_privacy">Please read and accept the Privacy Policy!</string>
     <!-- Error Strings -->
 
     <string name="hint_solo_trip">Solo Trip</string>
     <string name="trip_booked_successfully">Trip Booked Successfully</string>
+    <string name="places">Places</string>
+    <string name="registered_successfully">Registered Successfully!</string>
 </resources>

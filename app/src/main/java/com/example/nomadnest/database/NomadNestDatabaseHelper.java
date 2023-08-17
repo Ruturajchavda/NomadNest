@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 
 import com.example.nomadnest.model.Bookings;
 import com.example.nomadnest.model.Places;
+import com.example.nomadnest.model.User;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -67,6 +68,19 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
             COL_PLACE_ID + " INTEGER NOT NULL);";
     private static final String DROP_TABLE_BOOKINGS = "DROP TABLE IF EXISTS " + TABLE_BOOKINGS;
 
+    //Create and Drop User Table
+    private static final String TABLE_USER = "tbl_user";
+    private static final String COL_USERNAME = "userName";
+    private static final String COL_EMAIL = "emailId";
+    private static final String COL_PHONE = "phone";
+    private static final String COL_PASSWORD = "password";
+    private static final String CREATE_TABLE_USER = "CREATE TABLE " + TABLE_USER + " (" +
+            COL_USERNAME + " TEXT PRIMARY KEY, " +
+            COL_EMAIL + " TEXT NOT NULL, " +
+            COL_PHONE + " TEXT NOT NULL, " +
+            COL_PASSWORD + " TEXT NOT NULL);";
+    private static final String DROP_TABLE_USER = "DROP TABLE IF EXISTS " + TABLE_USER;
+
     public NomadNestDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -75,12 +89,14 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_TABLE_PLACE);
         db.execSQL(CREATE_TABLE_BOOKINGS);
+        db.execSQL(CREATE_TABLE_USER);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(DROP_TABLE_PLACE);
         db.execSQL(DROP_TABLE_BOOKINGS);
+        db.execSQL(DROP_TABLE_USER);
         onCreate(db);
     }
 
@@ -202,7 +218,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
                 @SuppressLint("Range") float tripBudget = cursor.getFloat(cursor.getColumnIndex(COL_TRIP_BUDGET));
                 @SuppressLint("Range") int placeId = cursor.getInt(cursor.getColumnIndex(COL_PLACE_ID));
 
-                Bookings booking = new Bookings(bookingId, totalPeople, formatStringToDate(travellingDate), tripDuration, tripType, tripBudget,placeId);
+                Bookings booking = new Bookings(bookingId, totalPeople, formatStringToDate(travellingDate), tripDuration, tripType, tripBudget, placeId);
                 bookingsArrayList.add(booking);
             } while (cursor.moveToNext());
 
@@ -263,5 +279,67 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
         }
 
         return date;
+    }
+
+    //Insert user data in  db
+    public boolean addUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_USERNAME, user.getName());
+        contentValues.put(COL_EMAIL, user.getEmail());
+        contentValues.put(COL_PHONE, user.getPhone());
+        contentValues.put(COL_PASSWORD, user.getPassword());
+        long result = db.insert(TABLE_USER, null, contentValues);
+        return (result != -1);
+    }
+
+    //check for existing user with email and password for login
+    public boolean isUser(String emailID, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COL_EMAIL};
+        String selection = COL_EMAIL + " = ?" + " AND " + COL_PASSWORD + " = ?";
+        String[] selectionArgs = {emailID, password};
+        Cursor cursor = db.query(TABLE_USER, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+
+    //check for existing user with email
+    public boolean isRegistered(String emailID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COL_EMAIL};
+        String selection = COL_EMAIL + " = ?";
+        String[] selectionArgs = {emailID};
+        Cursor cursor = db.query(TABLE_USER, columns, selection, selectionArgs, null, null, null);
+        int count = cursor.getCount();
+        cursor.close();
+        return count > 0;
+    }
+
+    //Get user data by his/her Email address
+    public User getUserByEmailId(String emailID) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns = {COL_USERNAME, COL_EMAIL, COL_PASSWORD};
+        String selection = COL_EMAIL + " = ?";
+        String[] selectionArgs = {emailID};
+        Cursor cursor = db.query(TABLE_USER, columns, selection, selectionArgs, null, null, null);
+
+        User user = null;
+        if (cursor != null && cursor.moveToFirst()) {
+            @SuppressLint("Range") String userName = cursor.getString(cursor.getColumnIndex(COL_USERNAME));
+            @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex(COL_EMAIL));
+            @SuppressLint("Range") String phone = cursor.getString(cursor.getColumnIndex(COL_PHONE));
+            @SuppressLint("Range") String password = cursor.getString(cursor.getColumnIndex(COL_PASSWORD));
+
+            user = new User();
+            user.setName(userName);
+            user.setEmail(email);
+            user.setPhone(phone);
+            user.setPassword(password);
+            cursor.close();
+        }
+
+        return user;
     }
 }

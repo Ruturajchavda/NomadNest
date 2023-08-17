@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -44,6 +45,7 @@ public class BookTripActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // assign view to binding
         binding = ActivityBookTripBinding.inflate(getLayoutInflater());
@@ -79,6 +81,15 @@ public class BookTripActivity extends AppCompatActivity implements View.OnClickL
         //Check/Uncheck radio buttons as per need
         binding.rdFamilyTrip.setChecked(false);
         binding.rdFriendsTrip.setChecked(false);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.example.nomadnest.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.example.nomadnest.R;
 import com.example.nomadnest.adapter.IntroDotPagerAdapter;
 import com.example.nomadnest.databinding.ActivityIntroScreenBinding;
+import com.example.nomadnest.session.SessionManager;
 
 public class IntroScreenActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -24,6 +26,12 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Hide ActionBar
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
 
         // assign view to binding
         binding = ActivityIntroScreenBinding.inflate(getLayoutInflater());
@@ -47,7 +55,7 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
         // set bottom position(Initial 0)
         setBottomPosition(0);
 
-
+        SessionManager.getInstance().createIntroSession();
     }
 
     private void initializeListener() {
@@ -113,15 +121,15 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
                 // move to next screen
                 binding.introViewpager.setCurrentItem(current);
             } else {
-                goToHomeScreen();
+                goToLoginScreen();
             }
         }else if(v.getId() == binding.btnSkip.getId()){
-            goToHomeScreen();
+            goToLoginScreen();
         }
     }
 
-    private void goToHomeScreen() {
-        startActivity(new Intent(IntroScreenActivity.this,HomeActivity.class));
+    private void goToLoginScreen() {
+        startActivity(new Intent(IntroScreenActivity.this,LoginActivity.class));
         finish();
     }
 
