@@ -67,6 +67,10 @@
     <string name="edit_profile_image">Edit Profile Picture</string>
     <string name="open_camera_tile">Open Camera</string>
     <string name="open_camera_question">Are you sure you want to open the camera?</string>
+    <string name="title_delete">Delete</string>
+    <string name="delete_question">Are you sure you want to remove your account?</string>
+    <string name="title_log_out">Log Out</string>
+    <string name="log_out_question">Are you sure you want to Log out?</string>
     <string name="user_details">user_details</string>
     <string name="update">Update</string>
     <string name="trip">Trip Destination</string>
@@ -108,4 +112,6 @@
     <string name="trip_booked_successfully">Trip Booked Successfully</string>
     <string name="places">Places</string>
     <string name="registered_successfully">Registered Successfully!</string>
+    <string name="remove_account">Remove Account</string>
+    <string name="support_text">We are Supporting you! Call on +1 999 999 9999.</string>
 </resources>

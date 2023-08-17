@@ -320,7 +320,7 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
     //Get user data by his/her Email address
     public User getUserByEmailId(String emailID) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] columns = {COL_USERNAME, COL_EMAIL, COL_PASSWORD};
+        String[] columns = {COL_USERNAME, COL_EMAIL,COL_PHONE, COL_PASSWORD};
         String selection = COL_EMAIL + " = ?";
         String[] selectionArgs = {emailID};
         Cursor cursor = db.query(TABLE_USER, columns, selection, selectionArgs, null, null, null);
@@ -342,4 +342,32 @@ public class NomadNestDatabaseHelper extends SQLiteOpenHelper {
 
         return user;
     }
+
+    // Update user data
+    public boolean updateUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put(COL_USERNAME, user.getName());
+        values.put(COL_PHONE, user.getPhone());
+
+        long result =  db.update(TABLE_USER, values, COL_EMAIL + " = ?",
+                new String[]{user.getEmail()});;
+
+        db.close();
+
+        return (result != -1);
+    }
+
+    // Delete user by email ID
+    public boolean deleteUserByEmail(String email) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        int rowsDeleted = db.delete(TABLE_USER, COL_EMAIL + " = ?", new String[]{email});
+
+        db.close();
+
+        return rowsDeleted > 0;
+    }
+
 }

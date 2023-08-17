@@ -54,8 +54,6 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
         binding.introViewpager.addOnPageChangeListener(viewPagerPageChangeListener);
         // set bottom position(Initial 0)
         setBottomPosition(0);
-
-        SessionManager.getInstance().createIntroSession();
     }
 
     private void initializeListener() {
@@ -130,6 +128,7 @@ public class IntroScreenActivity extends AppCompatActivity implements View.OnCli
 
     private void goToLoginScreen() {
         startActivity(new Intent(IntroScreenActivity.this,LoginActivity.class));
+        SessionManager.getInstance().createIntroSession();
         finish();
     }
 

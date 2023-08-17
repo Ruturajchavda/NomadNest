@@ -101,7 +101,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return false;
         }
 
-        if (binding.etPhone.getText().toString().trim().equals("")) {
+        if (binding.etPhone.getText().toString().trim().equals("")|| binding.etPhone.getText().toString().trim().length()<10) {
             binding.etPhone.setError(SignupActivity.this.getResources().getString(R.string.err_valid_phone));
             binding.etPhone.requestFocus();
             return false;

@@ -5,6 +5,7 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 
 import com.example.nomadnest.R;
 import com.example.nomadnest.model.User;
@@ -22,6 +23,7 @@ public class SessionManager {
     private static final String IS_LOGIN = "is_login";
     public static final String KEY_IS_SHOW_INTRO = "is_show_intro";
     public static final String KEY_IS_FIRST_TIME = "is_first_time";
+    public static final String KEY_USER_IMAGE = "user_image";
 
 
     private static SessionManager sessionManager;
@@ -63,7 +65,8 @@ public class SessionManager {
 
     public void logoutUser() {
         // Clearing all data from Shared Preferences
-        editor.clear();
+        editor.remove(IS_LOGIN);
+        editor.remove(KEY_EMAIL_ID);
         editor.commit();
     }
 
@@ -91,25 +94,18 @@ public class SessionManager {
         editor.commit();
     }
 
-    public final static String userString = "user";
+    public  String getEmail()
+    {
+        return pref.getString(KEY_EMAIL_ID, "");
+    }
 
-    public static void saveUserDetail(Activity activity, User user) {
-        SharedPreferences sharedPreferences = activity.getSharedPreferences(activity.getString(R.string.user_details), MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = gson.toJson(user);
-        editor.putString(userString, json);
+    public void setUserImage(String userImage)
+    {
+        editor.putString(KEY_USER_IMAGE, userImage);
         editor.commit();
     }
 
-    public static User getUserDetail(Activity activity) {
-        SharedPreferences sharedPreferences = activity.getSharedPreferences(activity.getString(R.string.user_details), MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String json = sharedPreferences.getString(userString, "");
-        User user = gson.fromJson(json, User.class);
-        return user;
+    public String getUserImage(){
+        return  pref.getString(KEY_USER_IMAGE, null);
     }
-
-
 }

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layoutMain"
     tools:context=".fragment.ProfileFragment">
 
     <LinearLayout
@@ -15,22 +16,22 @@
         <androidx.cardview.widget.CardView
             android:layout_width="155dp"
             android:layout_height="155dp"
-            app:cardCornerRadius="250dp"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/white">
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="250dp">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                app:cardCornerRadius="250dp"
-                android:layout_gravity="center">
+                android:layout_gravity="center"
+                app:cardCornerRadius="250dp">
 
                 <ImageView
                     android:id="@+id/ivProfilePicture"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:src="@drawable/profile_picture"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_picture" />
 
             </androidx.cardview.widget.CardView>
 
@@ -66,66 +67,90 @@
             android:textSize="@dimen/title_font"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/tvEditProfile"
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:background="@drawable/rounded_gray"
-            android:drawablePadding="@dimen/medium_margin"
-            android:padding="@dimen/medium_margin"
-            android:text="@string/edit_profile"
-            app:drawableEndCompat="@drawable/go_icon"
-            app:drawableStartCompat="@drawable/edit_profile" />
+            android:scrollbars="none">
 
-        <TextView
-            android:id="@+id/tvPrivacy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:background="@drawable/rounded_gray"
-            android:drawablePadding="@dimen/medium_margin"
-            android:padding="@dimen/medium_margin"
-            android:text="@string/privacy_policy_text"
-            app:drawableEndCompat="@drawable/go_icon"
-            app:drawableStartCompat="@drawable/baseline_privacy_tip_24" />
-
-        <TextView
-            android:id="@+id/tvTOS"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:background="@drawable/rounded_gray"
-            android:drawablePadding="@dimen/medium_margin"
-            android:padding="@dimen/medium_margin"
-            android:text="@string/terms_of_service"
-            app:drawableEndCompat="@drawable/go_icon"
-            app:drawableStartCompat="@drawable/terms_icon" />
-
-        <TextView
-            android:id="@+id/tvSupport"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:background="@drawable/rounded_gray"
-            android:drawablePadding="@dimen/medium_margin"
-            android:padding="@dimen/medium_margin"
-            android:text="@string/support"
-            app:drawableEndCompat="@drawable/go_icon"
-            app:drawableStartCompat="@drawable/baseline_contact_support_24" />
-
-        <TextView
-            android:id="@+id/tvLogout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/large_margin"
-            android:background="@drawable/rounded_gray"
-            android:drawablePadding="@dimen/medium_margin"
-            android:padding="@dimen/medium_margin"
-            android:text="@string/logout"
-            android:textColor="@color/red"
-            app:drawableStartCompat="@drawable/baseline_logout_24" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
 
+                <TextView
+                    android:id="@+id/tvEditProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/edit_profile"
+                    app:drawableEndCompat="@drawable/go_icon"
+                    app:drawableStartCompat="@drawable/edit_profile" />
+
+                <TextView
+                    android:id="@+id/tvPrivacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/privacy_policy_text"
+                    app:drawableEndCompat="@drawable/go_icon"
+                    app:drawableStartCompat="@drawable/baseline_privacy_tip_24" />
+
+                <TextView
+                    android:id="@+id/tvTOS"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/terms_of_service"
+                    app:drawableEndCompat="@drawable/go_icon"
+                    app:drawableStartCompat="@drawable/terms_icon" />
+
+                <TextView
+                    android:id="@+id/tvSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/support"
+                    app:drawableEndCompat="@drawable/go_icon"
+                    app:drawableStartCompat="@drawable/baseline_contact_support_24" />
+
+                <TextView
+                    android:id="@+id/tvLogout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/logout"
+                    android:textColor="@color/red"
+                    app:drawableStartCompat="@drawable/baseline_logout_24" />
+
+                <TextView
+                    android:id="@+id/tvDeleteAccount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/large_margin"
+                    android:background="@drawable/rounded_gray"
+                    android:drawablePadding="@dimen/medium_margin"
+                    android:padding="@dimen/medium_margin"
+                    android:text="@string/remove_account"
+                    android:textColor="@color/red"
+                    app:drawableStartCompat="@drawable/ic_delete" />
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </FrameLayout>

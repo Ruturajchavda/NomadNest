@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/large_margin"
+    android:padding="@dimen/large_margin"
     android:orientation="vertical"
     tools:context=".activity.EditProfileActivity">
 
@@ -50,7 +50,8 @@
         android:id="@+id/etEmailLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/large_margin">
+        android:layout_marginTop="@dimen/large_margin"
+        android:visibility="gone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
@@ -93,7 +94,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/phone_number"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
+            android:maxLength="10"
             android:background="@drawable/gray_border"
             android:textColorHint="@color/gainsboro"
             android:textSize="@dimen/medium_font" />
