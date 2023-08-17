@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.nomadnest.R;
 
 import com.example.nomadnest.databinding.ActivityHomeBinding;
+import com.example.nomadnest.fragment.AboutFragment;
 import com.example.nomadnest.fragment.CalenderFragment;
 import com.example.nomadnest.fragment.HomeFragment;
 import com.example.nomadnest.fragment.ProfileFragment;
@@ -78,6 +79,11 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
             ProfileFragment profileFragment = (ProfileFragment) manager.findFragmentByTag(ProfileFragment.class.getName());
             if (profileFragment == null) {
                 fragment = new ProfileFragment();
+            }
+        }else  if(item.getItemId() == R.id.nav_about){
+            AboutFragment aboutFragment = (AboutFragment) manager.findFragmentByTag(AboutFragment.class.getName());
+            if (aboutFragment == null) {
+                fragment = new AboutFragment();
             }
         }
         return loadFragment(fragment);
