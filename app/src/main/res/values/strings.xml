@@ -60,6 +60,8 @@
     <string name="open_camera_question">Are you sure you want to open the camera?</string>
     <string name="user_details">user_details</string>
     <string name="update">Update</string>
+    <string name="trip">Trip Destination</string>
+    <string name="trip_description">5 Days trip - 4 people</string>
 
 
 </resources>
